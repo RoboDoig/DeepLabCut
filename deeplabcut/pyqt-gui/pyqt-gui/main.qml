@@ -115,9 +115,10 @@ ApplicationWindow {
             onClicked: iface.extract_frames()
         }
 
-        ProgressBar {
-            id: extractFramesProgressBar
-            value: 0.5
+        BusyIndicator {
+            id: busyIndicator
+            Layout.preferredWidth: 40
+            Layout.preferredHeight: 40
         }
     }
 
