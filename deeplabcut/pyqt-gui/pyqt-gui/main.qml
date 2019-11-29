@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.13
 import QtQuick.Shapes 1.11
+import QtQuick.Dialogs 1.1
 
 ApplicationWindow {
     visible: true
@@ -24,6 +25,16 @@ ApplicationWindow {
         }
     }
 
+    FileDialog {
+        id: videoFileDialog
+        title: "Select Video"
+        nameFilters: ["Video Files (*.mp4)"]
+
+        onAccepted: {
+            iface.load_video(videoFileDialog.fileUrl)
+        }
+    }
+
     GridLayout {
         id: gridLayout
         anchors.rightMargin: 20
@@ -37,14 +48,14 @@ ApplicationWindow {
         columns: 2
 
         Label {
-            id: label
+            id: projectNameLabel
             text: qsTr("Name of the project:")
             font.pointSize: 12
             horizontalAlignment: Text.AlignLeft
         }
 
         TextInput {
-            id: textInput
+            id: projectNameEdit
             width: 80
             height: 20
             text: qsTr("Project Name")
@@ -53,13 +64,13 @@ ApplicationWindow {
         }
 
         Label {
-            id: label1
+            id: experimenterNameLabel
             text: qsTr("Name of the experimenter:")
             font.pointSize: 12
         }
 
         TextInput {
-            id: textInput1
+            id: experimenterNameEdit
             width: 80
             height: 20
             text: qsTr("Experimenter Name")
@@ -68,15 +79,27 @@ ApplicationWindow {
         }
 
         Label {
-            id: label2
+            id: chooseVideoLabel
             text: qsTr("Choose the videos:")
             font.pointSize: 12
         }
 
         Button {
-            id: button
+            id: chooseVideoButton
             text: qsTr("Load Videos")
             Layout.fillWidth: false
+
+            onClicked: {
+                videoFileDialog.open()
+            }
+        }
+
+        Button {
+            id: okButton
+            text: qsTr("OK")
+            Layout.fillWidth: false
+
+            onClicked: iface.create_new_project(projectNameEdit.text, experimenterNameEdit.text)
         }
     }
 
