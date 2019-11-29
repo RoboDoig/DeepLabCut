@@ -11,8 +11,15 @@ class Interface(QObject):
 
     @pyqtSlot(str)
     def load_video(self, file_url):
-        self.file_list.append(file_url)
+        file = file_url.split('file:///')[1]
+        self.file_list.append(file)
 
     @pyqtSlot(str, str)
     def create_new_project(self, experimenter, task):
-        self.cfg = deeplabcut.create_new_project(experimenter, task, self.file_list)
+        self.cfg = deeplabcut.create_new_project(experimenter, task, self.file_list, copy_videos=True)
+
+    @pyqtSlot()
+    def extract_frames(self):
+        deeplabcut.extract_frames(self.cfg, mode='automatic', algo='kmeans', userfeedback=False)
+        print(self.cfg)
+        print('extract frames')

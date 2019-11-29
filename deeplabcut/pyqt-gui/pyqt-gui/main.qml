@@ -50,7 +50,7 @@ ApplicationWindow {
         Label {
             id: projectNameLabel
             text: qsTr("Name of the project:")
-            font.pointSize: 12
+            font.pointSize: 8
             horizontalAlignment: Text.AlignLeft
         }
 
@@ -58,35 +58,36 @@ ApplicationWindow {
             id: projectNameEdit
             width: 80
             height: 20
-            text: qsTr("Project Name")
-            font.pointSize: 12
+            text: qsTr("Project")
+            font.pointSize: 8
             Layout.fillWidth: true
         }
 
         Label {
             id: experimenterNameLabel
             text: qsTr("Name of the experimenter:")
-            font.pointSize: 12
+            font.pointSize: 8
         }
 
         TextInput {
             id: experimenterNameEdit
             width: 80
             height: 20
-            text: qsTr("Experimenter Name")
-            font.pointSize: 12
+            text: qsTr("Experimenter")
+            font.pointSize: 8
             Layout.fillWidth: true
         }
 
         Label {
             id: chooseVideoLabel
             text: qsTr("Choose the videos:")
-            font.pointSize: 12
+            font.pointSize: 8
         }
 
         Button {
             id: chooseVideoButton
             text: qsTr("Load Videos")
+            Layout.preferredHeight: 30
             Layout.fillWidth: false
 
             onClicked: {
@@ -96,12 +97,30 @@ ApplicationWindow {
 
         Button {
             id: okButton
-            text: qsTr("OK")
+            text: qsTr("Create Project")
+            Layout.columnSpan: 2
+            Layout.rowSpan: 1
+            Layout.preferredHeight: 30
+            Layout.fillHeight: false
             Layout.fillWidth: false
 
             onClicked: iface.create_new_project(projectNameEdit.text, experimenterNameEdit.text)
         }
+
+        Button {
+            id: extractFramesButton
+            text: qsTr("Extract Frames")
+            Layout.preferredHeight: 30
+
+            onClicked: iface.extract_frames()
+        }
+
+        ProgressBar {
+            id: extractFramesProgressBar
+            value: 0.5
+        }
     }
+
 
 }
 
