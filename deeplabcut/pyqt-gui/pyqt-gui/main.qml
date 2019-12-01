@@ -7,15 +7,15 @@ import QtQuick.Dialogs 1.1
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 1920
+    height: 1080
     title: qsTr("DeepLabCut PyQt")
 
     MenuBar {
         x: 0
         y: 0
-        width: 640
         height: 40
+        width: parent.width
         Menu {
             title: qsTr("File")
             MenuItem {
@@ -35,6 +35,104 @@ ApplicationWindow {
         }
     }
 
+    GridLayout {
+        id: mainGridLayout
+        anchors.rightMargin: 20
+        anchors.leftMargin: 20
+        anchors.bottomMargin: 20
+        anchors.topMargin: 40
+        anchors.fill: parent
+        rows: 2
+        columns: 1
+
+        Rectangle {
+            id: createProjectPane
+            border.color: "black"
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            GridLayout {
+                id: createProjectGridLayout
+                anchors.rightMargin: 20
+                anchors.leftMargin: 20
+                anchors.bottomMargin: 20
+                anchors.topMargin: 20
+                anchors.fill: parent
+                columnSpacing: 20
+                rowSpacing: 5
+                rows: 3
+                columns: 2
+
+                Label {
+                    id: projectNameLabel
+                    text: qsTr("Name of the project:")
+                    font.pointSize: 12
+                    horizontalAlignment: Text.AlignLeft
+                }
+
+                TextInput {
+                    id: projectNameEdit
+                    text: qsTr("Project")
+                    font.pointSize: 12
+                    Layout.fillWidth: true
+                }
+
+                Label {
+                    id: experimenterNameLabel
+                    text: qsTr("Experiment name:")
+                    font.pointSize: 12
+                    horizontalAlignment: Text.AlignLeft
+                }
+
+                TextInput {
+                    id: experimenterNameEdit
+                    text: qsTr("Experimenter")
+                    font.pointSize: 12
+                    Layout.fillWidth: true
+                }
+
+                Label {
+                    id: chooseVideoLabel
+                    text: qsTr("Choose videos")
+                    font.pointSize: 12
+                }
+
+                Button {
+                    id: chooseVideoButton
+                    text: qsTr("Load Videos")
+                    Layout.preferredHeight: 30
+                    Layout.fillWidth: false
+                    font.pointSize: 12
+
+                    onClicked: {
+                        videoFileDialog.open()
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            id: extractFramesPane
+            border.color: "black"
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
+            GridLayout {
+                id: extractFramesGridLayout
+                anchors.rightMargin: 20
+                anchors.leftMargin: 20
+                anchors.bottomMargin: 20
+                anchors.topMargin: 20
+                anchors.fill: parent
+                columnSpacing: 20
+                rowSpacing: 5
+                rows: 3
+                columns: 2
+             }
+        }
+    }
+
+    /*
     GridLayout {
         id: gridLayout
         anchors.rightMargin: 20
@@ -89,6 +187,7 @@ ApplicationWindow {
             text: qsTr("Load Videos")
             Layout.preferredHeight: 30
             Layout.fillWidth: false
+            font.pointSize: 8
 
             onClicked: {
                 videoFileDialog.open()
@@ -121,6 +220,7 @@ ApplicationWindow {
             Layout.preferredHeight: 40
         }
     }
+    */
 
 
 }
