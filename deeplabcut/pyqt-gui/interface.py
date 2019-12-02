@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QVariant, QTimer, QThread
 import deeplabcut
+# At the moment, the data model is functionally the config yaml file, may want to port to model class later
 
-### At the moment, the data model is functionally the config yaml file, may want to port to model class later ###
 
 class Interface(QObject):
     def __init__(self, app, context, parent):
