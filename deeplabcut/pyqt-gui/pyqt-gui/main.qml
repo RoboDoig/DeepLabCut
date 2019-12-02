@@ -1,10 +1,12 @@
-import QtQuick 2.9
+import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.13
 import QtQuick.Shapes 1.11
 import QtQuick.Dialogs 1.1
 import QtQuick.Controls.Styles 1.4
+import QtCharts 2.3
+import QtMultimedia 5.12
 
 ApplicationWindow {
     id: appWindow
@@ -40,6 +42,7 @@ ApplicationWindow {
 
     GridLayout {
         id: mainGridLayout
+        rowSpacing: 5
         anchors.rightMargin: 20
         anchors.leftMargin: 20
         anchors.bottomMargin: 20
@@ -97,7 +100,7 @@ ApplicationWindow {
                             id: projectNameLabel
                             color: "#fdfdfd"
                             text: qsTr("Name of the project:")
-                            font.family: "consolas"
+                            font.family: "Menlo"
                             font.pointSize: 12
                             horizontalAlignment: Text.AlignLeft
                         }
@@ -117,13 +120,20 @@ ApplicationWindow {
                                 id: projectNameEdit
                                 color: "#fdfdfd"
                                 text: qsTr("Project")
-                                font.family: "consolas"
-                                anchors.bottomMargin: 5
-                                anchors.topMargin: 5
-                                anchors.fill: parent
+                                transformOrigin: Item.Center
+                                anchors.right: parent.right
+                                anchors.rightMargin: 0
+                                anchors.left: parent.left
+                                anchors.leftMargin: 0
+                                anchors.bottom: parent.bottom
+                                anchors.bottomMargin: 0
+                                anchors.top: parent.top
+                                anchors.topMargin: 0
+                                font.family: "Menlo"
                                 horizontalAlignment: Text.AlignHCenter
                                 font.pointSize: 12
                                 Layout.fillWidth: true
+                                verticalAlignment: TextInput.AlignVCenter
                             }
                         }
 
@@ -131,7 +141,7 @@ ApplicationWindow {
                             id: experimenterNameLabel
                             color: "#ffffff"
                             text: qsTr("Experiment name:")
-                            font.family: "consolas"
+                            font.family: "Menlo"
                             font.pointSize: 12
                             horizontalAlignment: Text.AlignLeft
                         }
@@ -150,13 +160,12 @@ ApplicationWindow {
                                 id: experimenterNameEdit
                                 color: "#fdfdfd"
                                 text: qsTr("Experimenter")
-                                font.family: "consolas"
-                                anchors.topMargin: 5
-                                anchors.bottomMargin: 5
                                 anchors.fill: parent
+                                font.family: "Menlo"
                                 horizontalAlignment: Text.AlignHCenter
                                 font.pointSize: 12
                                 Layout.fillWidth: true
+                                verticalAlignment: TextInput.AlignVCenter
                             }
                         }
 
@@ -175,9 +184,13 @@ ApplicationWindow {
                             contentItem: Text {
                                 color: "#ffffff"
                                 text: "Create Project"
-                                font.family: "consolas"
+                                anchors.bottomMargin: 5
+                                anchors.topMargin: 5
+                                anchors.fill: parent
+                                font.family: "Menlo"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
                             }
 
                             onClicked: iface.create_new_project(projectNameEdit.text, experimenterNameEdit.text)
@@ -197,9 +210,13 @@ ApplicationWindow {
                             contentItem: Text {
                                 color: "#ffffff"
                                 text: "Load Video"
-                                font.family: "consolas"
+                                anchors.bottomMargin: 5
+                                anchors.topMargin: 5
+                                anchors.fill: parent
+                                font.family: "Menlo"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
                             }
 
                             onClicked: {
@@ -234,15 +251,19 @@ ApplicationWindow {
                             font.pointSize: 12
 
                             background: Rectangle {
-                                color: okButton.down ? "#414141" : "#313131"
+                                color: extractFramesButton.down ? "#414141" : "#313131"
                             }
 
                             contentItem: Text {
                                 color: "#ffffff"
                                 text: "Extract Frames"
-                                font.family: "consolas"
+                                anchors.bottomMargin: 5
+                                anchors.topMargin: 5
+                                anchors.fill: parent
+                                font.family: "Menlo"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
                             }
 
                             onClicked: iface.extract_frames()
@@ -283,7 +304,7 @@ ApplicationWindow {
                 columns: 3
 
                 Rectangle {
-                    id: rectangle
+                    id: videoViewerPane
                     width: 200
                     height: 200
                     color: "#525252"
@@ -291,6 +312,50 @@ ApplicationWindow {
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     Layout.fillWidth: true
                     Layout.fillHeight: true
+
+                    PolarChartView {
+                        id: line
+                        anchors.fill: parent
+                        LineSeries {
+                            name: "LineSeries"
+                            XYPoint {
+                                x: 0
+                                y: 4.3
+                            }
+
+                            XYPoint {
+                                x: 2
+                                y: 4.7
+                            }
+
+                            XYPoint {
+                                x: 4
+                                y: 5.2
+                            }
+
+                            XYPoint {
+                                x: 6
+                                y: 6.1
+                            }
+
+                            XYPoint {
+                                x: 8
+                                y: 12.9
+                            }
+
+                            XYPoint {
+                                x: 9
+                                y: 19.2
+                            }
+                            axisAngular: ValueAxis {
+                                tickCount: 9
+                            }
+                            axisRadial: CategoryAxis {
+                                max: 20
+                                min: 0
+                            }
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -317,98 +382,6 @@ ApplicationWindow {
             }
         }
     }
-
-    /*
-    GridLayout {
-        id: gridLayout
-        anchors.rightMargin: 20
-        anchors.leftMargin: 20
-        anchors.bottomMargin: 20
-        anchors.topMargin: 40
-        anchors.fill: parent
-        columnSpacing: 20
-        rowSpacing: 5
-        rows: 3
-        columns: 2
-
-        Label {
-            id: projectNameLabel
-            text: qsTr("Name of the project:")
-            font.pointSize: 8
-            horizontalAlignment: Text.AlignLeft
-        }
-
-        TextInput {
-            id: projectNameEdit
-            width: 80
-            height: 20
-            text: qsTr("Project")
-            font.pointSize: 8
-            Layout.fillWidth: true
-        }
-
-        Label {
-            id: experimenterNameLabel
-            text: qsTr("Name of the experimenter:")
-            font.pointSize: 8
-        }
-
-        TextInput {
-            id: experimenterNameEdit
-            width: 80
-            height: 20
-            text: qsTr("Experimenter")
-            font.pointSize: 8
-            Layout.fillWidth: true
-        }
-
-        Label {
-            id: chooseVideoLabel
-            text: qsTr("Choose the videos:")
-            font.pointSize: 8
-        }
-
-        Button {
-            id: chooseVideoButton
-            text: qsTr("Load Videos")
-            Layout.preferredHeight: 30
-            Layout.fillWidth: false
-            font.pointSize: 8
-
-            onClicked: {
-                videoFileDialog.open()
-            }
-        }
-
-        Button {
-            id: okButton
-            text: qsTr("Create Project")
-            Layout.columnSpan: 2
-            Layout.rowSpan: 1
-            Layout.preferredHeight: 30
-            Layout.fillHeight: false
-            Layout.fillWidth: false
-
-            onClicked: iface.create_new_project(projectNameEdit.text, experimenterNameEdit.text)
-        }
-
-        Button {
-            id: extractFramesButton
-            text: qsTr("Extract Frames")
-            Layout.preferredHeight: 30
-
-            onClicked: iface.extract_frames()
-        }
-
-        BusyIndicator {
-            id: busyIndicator
-            Layout.preferredWidth: 40
-            Layout.preferredHeight: 40
-        }
-    }
-    */
-
-
 }
 
 /*##^##
@@ -418,5 +391,6 @@ D{i:12;anchors_height:100;anchors_width:100;anchors_x:205;anchors_y:"-126"}D{i:1
 D{i:17;anchors_height:100;anchors_width:100}D{i:18;anchors_height:100;anchors_width:100}
 D{i:16;anchors_height:100;anchors_width:100}D{i:9;anchors_height:100;anchors_width:100}
 D{i:22;anchors_height:100;anchors_width:100}D{i:31;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:41;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
 }
 ##^##*/
