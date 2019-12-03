@@ -1,4 +1,5 @@
 import sys
+import os
 
 from PyQt5.QtQml import QQmlApplicationEngine
 from PyQt5.QtWidgets import QApplication
@@ -7,6 +8,7 @@ from PyQt5.QtCore import QUrl
 from interface import Interface
 
 if __name__ == '__main__':
+    os.environ["QT_DEBUG_PLUGINS"] = "1"
     app = QApplication(sys.argv)
 
     appEngine = QQmlApplicationEngine()

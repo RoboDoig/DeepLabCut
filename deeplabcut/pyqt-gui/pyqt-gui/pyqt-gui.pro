@@ -1,4 +1,4 @@
-QT += qml quick widgets charts multimedia multimediawidgets
+QT += qml quick core gui widgets charts multimedia multimediawidgets
 
 CONFIG += c++11
 
@@ -19,10 +19,10 @@ SOURCES += \
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH = /Users/andrewerskine/Qt5.13.2/5.13.2/clang_64/qml
+QML_IMPORT_PATH =
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH = /Users/andrewerskine/Qt5.13.2/5.13.2/clang_64/qml
+QML_DESIGNER_IMPORT_PATH =
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

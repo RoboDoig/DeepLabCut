@@ -6,7 +6,7 @@ import QtQuick.Shapes 1.11
 import QtQuick.Dialogs 1.1
 import QtQuick.Controls.Styles 1.4
 import QtCharts 2.3
-import QtMultimedia 5.12
+import QtMultimedia 5.10
 
 ApplicationWindow {
     id: appWindow
@@ -100,7 +100,7 @@ ApplicationWindow {
                             id: projectNameLabel
                             color: "#fdfdfd"
                             text: qsTr("Name of the project:")
-                            font.family: "Menlo"
+                            font.family: "Verdana"
                             font.pointSize: 12
                             horizontalAlignment: Text.AlignLeft
                         }
@@ -129,7 +129,7 @@ ApplicationWindow {
                                 anchors.bottomMargin: 0
                                 anchors.top: parent.top
                                 anchors.topMargin: 0
-                                font.family: "Menlo"
+                                font.family: "Verdana"
                                 horizontalAlignment: Text.AlignHCenter
                                 font.pointSize: 12
                                 Layout.fillWidth: true
@@ -141,7 +141,7 @@ ApplicationWindow {
                             id: experimenterNameLabel
                             color: "#ffffff"
                             text: qsTr("Experiment name:")
-                            font.family: "Menlo"
+                            font.family: "Verdana"
                             font.pointSize: 12
                             horizontalAlignment: Text.AlignLeft
                         }
@@ -161,7 +161,7 @@ ApplicationWindow {
                                 color: "#fdfdfd"
                                 text: qsTr("Experimenter")
                                 anchors.fill: parent
-                                font.family: "Menlo"
+                                font.family: "Verdana"
                                 horizontalAlignment: Text.AlignHCenter
                                 font.pointSize: 12
                                 Layout.fillWidth: true
@@ -187,7 +187,7 @@ ApplicationWindow {
                                 anchors.bottomMargin: 5
                                 anchors.topMargin: 5
                                 anchors.fill: parent
-                                font.family: "Menlo"
+                                font.family: "Verdana"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
@@ -213,7 +213,7 @@ ApplicationWindow {
                                 anchors.bottomMargin: 5
                                 anchors.topMargin: 5
                                 anchors.fill: parent
-                                font.family: "Menlo"
+                                font.family: "Verdana"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
@@ -260,7 +260,7 @@ ApplicationWindow {
                                 anchors.bottomMargin: 5
                                 anchors.topMargin: 5
                                 anchors.fill: parent
-                                font.family: "Menlo"
+                                font.family: "Verdana"
                                 font.pointSize: 12
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
@@ -359,7 +359,7 @@ ApplicationWindow {
                 }
 
                 Rectangle {
-                    id: rectangle1
+                    id: vidRectangle
                     width: 200
                     height: 200
                     color: "#525252"
@@ -388,7 +388,7 @@ ApplicationWindow {
 Designer {
     D{i:1;anchors_height:100;anchors_width:100}D{i:4;anchors_height:434;anchors_width:640;anchors_x:0;anchors_y:46}
 D{i:12;anchors_height:100;anchors_width:100;anchors_x:205;anchors_y:"-126"}D{i:15;anchors_height:19;anchors_width:272;anchors_x:205;anchors_y:"-126"}
-D{i:17;anchors_height:100;anchors_width:100}D{i:18;anchors_height:100;anchors_width:100}
+D{i:18;anchors_height:100;anchors_width:100}D{i:17;anchors_height:100;anchors_width:100}
 D{i:16;anchors_height:100;anchors_width:100}D{i:9;anchors_height:100;anchors_width:100}
 D{i:22;anchors_height:100;anchors_width:100}D{i:31;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
 D{i:41;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
