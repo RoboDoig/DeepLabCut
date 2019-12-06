@@ -8,7 +8,7 @@ from PyQt5.QtCore import QUrl
 from interface import Interface
 
 if __name__ == '__main__':
-    os.environ["QT_DEBUG_PLUGINS"] = "1"
+    # os.environ["QT_DEBUG_PLUGINS"] = "1"
     app = QApplication(sys.argv)
 
     appEngine = QQmlApplicationEngine()
