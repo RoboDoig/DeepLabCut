@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.13
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.13
@@ -302,6 +302,41 @@ ApplicationWindow {
                 rows: 1
                 columns: 3
 
+
+                Rectangle {
+                    id: infoPane
+                    width: 200
+                    height: 200
+                    color: "#525252"
+                    border.color: "#525252"
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+
+                    GridLayout {
+                        id: infoPaneGridLayout
+                        columns: 2
+                        rows: 2
+                        anchors.rightMargin: 20
+                        anchors.leftMargin: 20
+                        anchors.bottomMargin: 20
+                        anchors.topMargin: 20
+                        anchors.fill: parent
+
+                        Label {
+                            id: label
+                            color: "#fdfdfd"
+                            text: qsTr("Videos")
+                            font.family: "Verdana"
+                            font.pointSize: 12
+                            horizontalAlignment: Text.AlignHCenter
+                            Layout.fillWidth: true
+                            Layout.fillHeight: false
+                            Layout.columnSpan: 2
+                        }
+                    }
+                }
+
                 Rectangle {
                     id: previewPane
                     width: 200
@@ -314,7 +349,8 @@ ApplicationWindow {
 
                     GridLayout {
                         id: previewPaneGridLayout
-                        anchors.topMargin: 10
+                        anchors.bottomMargin: 5
+                        anchors.topMargin: 5
                         anchors.rightMargin: 5
                         anchors.leftMargin: 5
                         rows: 2
@@ -414,17 +450,6 @@ ApplicationWindow {
                 }
 
                 Rectangle {
-                    id: vidRectangle
-                    width: 200
-                    height: 200
-                    color: "#525252"
-                    border.color: "#525252"
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Rectangle {
                     id: rectangle2
                     width: 200
                     height: 200
@@ -445,7 +470,12 @@ Designer {
 D{i:12;anchors_height:100;anchors_width:100;anchors_x:205;anchors_y:"-126"}D{i:15;anchors_height:19;anchors_width:272;anchors_x:205;anchors_y:"-126"}
 D{i:21;anchors_height:100;anchors_width:100}D{i:20;anchors_height:100;anchors_width:100}
 D{i:19;anchors_height:100;anchors_width:100}D{i:9;anchors_height:100;anchors_width:100}
-D{i:22;anchors_height:100;anchors_width:100}D{i:37;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
-D{i:31;anchors_height:100;anchors_width:100}D{i:41;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:22;anchors_height:100;anchors_width:100}D{i:33;anchors_height:100;anchors_width:100}
+D{i:31;anchors_height:100;anchors_width:100}D{i:30;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:36;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}D{i:39;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:38;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}D{i:37;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:41;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}D{i:40;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:43;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}D{i:42;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
+D{i:35;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}D{i:34;anchors_height:300;anchors_width:300;anchors_x:0;anchors_y:0}
 }
 ##^##*/
